@@ -1,0 +1,53 @@
+{
+  "name": "mitim",
+  "version": "1.0.1",
+  "description": "Create a new Discord bot",
+  "main": "./src/index.js",
+  "types": "./typings/index.d.ts",
+  "files": [
+    "src",
+    "typings"
+  ],
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "fix": "eslint --fix .",
+    "publish:dev": "npm publish --tag developer",
+    "publish:npm": "npm publish",
+    "deploy": "gh-pages -d doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xTheSebaSx-afk/mitim.git"
+  },
+  "keywords": [
+    "discord",
+    "discord.js",
+    "bot",
+    "mitim",
+    "base",
+    "discordapp"
+  ],
+  "author": "! xTheSebaSx#7432",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xTheSebaSx-afk/mitim/issues"
+  },
+  "homepage": "https://github.com/xTheSebaSx-afk/mitim#readme",
+  "dependencies": {
+    "discord.js": "^13.8.0",
+    "mitim": "^1.1.1-dev",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "clean-jsdoc-theme": "^4.0.7",
+    "eslint": "^8.18.0",
+    "prettier": "^2.7.1",
+    "typedoc": "^0.22.17"
+  }
+}

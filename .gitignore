@@ -1,0 +1,8 @@
+tsconfig.json
+test
+node_modules
+.vscode
+.prettierignore
+.eslintrc.json
+doc
+jsdoc.json
