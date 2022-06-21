@@ -16,7 +16,7 @@ const Client = require('./Client')
  */
 class Event {
     /**
-   * @typedef {{ name: EventKey, run: (client: Client, ...args: Discord.ClientEvents[EventKey]) => void; }} EventOptions
+   * @typedef {{ name: keyof Discord.ClientEvents, run: (client: Client, ...args: Discord.ClientEvents[T]) => void; }} EventOptions
    * @param {EventOptions} options
    */
     constructor(options) {
