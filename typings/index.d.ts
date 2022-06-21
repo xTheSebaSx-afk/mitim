@@ -1,5 +1,5 @@
 import Discord from "discord.js";
-import { Client } from "../../class/Client";
+import Client from "../../class/Client";
 
 type CommandCategory = "general" | "moderation" | "fun" | "owner";
 

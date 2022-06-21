@@ -1,3 +1,9 @@
+/**
+ * import typings with jsdoc
+ * @typedef {import("../../typings/index").ApplicationCommandStructure} ApplicationCommandStructure
+ * @typedef {import("../../typings/index").TextCommandStructure} TextCommandStructure
+ */
+
 const fs = require('fs')
 
 /**
@@ -6,7 +12,7 @@ const fs = require('fs')
  */
 
 /**
- * @param {TextCommandStructure|ApplicationCommandStructure} Collection
+ * @param {import('discord.js').Collection<TextCommandStructure|ApplicationCommandStructure>} Collection
  * @param {string} path
  * @param {CommandType} type
  */
