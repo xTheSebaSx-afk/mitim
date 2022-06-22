@@ -12,4 +12,10 @@ class TextCommand {
   }
 }
 
+class ApplicationCommand{
+    /**
+     * 
+     */
+}
+
 module.exports.TextCommand = TextCommand;
