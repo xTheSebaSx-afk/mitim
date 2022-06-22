@@ -1,4 +1,4 @@
-import index from '../src/index'
+import index from "../src/index";
 import Discord from "discord.js";
 
 type CommandCategory = "general" | "moderation" | "fun" | "owner";
@@ -36,4 +36,4 @@ export interface ExtendedClientOptions extends Discord.ClientOptions {
   prefix: string;
 }
 
-export * from '../src/index'
+export * from "../src/index";
