@@ -1,6 +1,6 @@
 {
   "name": "mitim",
-  "version": "1.0.5-dev",
+  "version": "1.0.5",
   "description": "Create a new Discord bot",
   "main": "./src/index.js",
   "types": "./typings/index.d.ts",
