@@ -1,6 +1,7 @@
-import Discord from "discord.js";
+import { Client } from "../../class/Client";
 import Client from "../src/class/Client";
 import Event from "../src/class/Event";
+import Discord from "discord.js";
 
 type CommandCategory = "general" | "moderation" | "fun" | "owner";
 

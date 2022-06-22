@@ -4,6 +4,7 @@
  * @typedef {import("../../typings/index").ApplicationCommandStructure} ApplicationCommandStructure
  * @typedef {import("../../typings/index").TextCommandStructure} TextCommandStructure
  */
+
 const Discord = require('discord.js')
 
 /**
@@ -16,22 +17,22 @@ const Discord = require('discord.js')
  * client.login('token')
  */
 class Client extends Discord.Client {
-    /**
+  /**
    * @param {ExtendedClientOptions} options
    */
-    constructor(options) {
-        super(options)
-    }
+  constructor(options) {
+    super(options);
+  }
 
-    /**
+  /**
    * @type {Discord.Collection<string, TextCommandStructure>}
    */
-    TextCommand = new Discord.Collection()
+  TextCommand = new Discord.Collection();
 
-    /**
+  /**
    * @type {Discord.Collection<string, ApplicationCommandStructure>}
    */
-    ApplicationCommand = new Discord.Collection()
+  ApplicationCommand = new Discord.Collection();
 }
 
-module.exports = Client
+module.exports = Client;
