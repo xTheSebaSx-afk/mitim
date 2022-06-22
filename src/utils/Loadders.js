@@ -1,3 +1,7 @@
+/**
+ * @typedef {import("../../typings/index").ApplicationCommandStructure} ApplicationCommandStructure
+ * @typedef {import("../../typings/index").TextCommandStructure} TextCommandStructure
+ */
 const fs = require('fs')
 
 /**
