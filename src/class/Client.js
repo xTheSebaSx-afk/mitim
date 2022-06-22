@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * import typings with jsdoc
  * @typedef {import("../../typings/index").ExtendedClientOptions} ExtendedClientOptions

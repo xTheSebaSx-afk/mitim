@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @typedef {import("../../typings/index").ApplicationCommandStructure} ApplicationCommandStructure
  * @typedef {import("../../typings/index").TextCommandStructure} TextCommandStructure

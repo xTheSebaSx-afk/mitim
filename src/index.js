@@ -1,3 +1,5 @@
+'use strict';
+
 // Mains
 exports.Client = require("./class/Client");
 exports.Event = require("./class/Event");

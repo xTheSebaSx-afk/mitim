@@ -1,5 +1,8 @@
-import index from "../src/index";
 import Discord from "discord.js";
+import Client from '../src/class/Client'
+import * as Command from '../src/class/Command'
+import Event from '../src/class/Event'
+import * as Loadders from '../src/utils/Loadders'
 
 type CommandCategory = "general" | "moderation" | "fun" | "owner";
 
@@ -36,4 +39,9 @@ export interface ExtendedClientOptions extends Discord.ClientOptions {
   prefix: string;
 }
 
-export * from "../src/index";
+export {
+  Client,
+  Command,
+  Loadders,
+  Event
+}
