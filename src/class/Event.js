@@ -2,10 +2,6 @@ const Discord = require("discord.js");
 const Client = require("./Client");
 
 /**
- * @template {keyof Discord.ClientEvents} EventKey
- */
-
-/**
  * Create a new event
  * @example
  * new Event({
@@ -13,9 +9,15 @@ const Client = require("./Client");
  *    run: (client, channel) => {}
  * })
  */
+
+/**
+ * @template {keyof Discord.ClientEvents} K
+ */
+
 class Event {
+
   /**
-   * @typedef {{ name: EventKey, run: (client: Client, ...args: Discord.ClientEvents[EventKey]) => void; }} EventOptions
+   * @typedef {{ name: K, run: (client: Client, ...args: Discord.ClientEvents[K]) => void; }} EventOptions
    * @param {EventOptions} options
    */
   constructor(options) {
