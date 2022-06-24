@@ -1,8 +1,5 @@
 import Discord from "discord.js";
-import Client from '../src/class/Client'
-import * as Command from '../src/class/Command'
-import Event from '../src/class/Event'
-import * as Loadders from '../src/utils/Loadders'
+import Client from "../src/class/Client";
 
 type CommandCategory = "general" | "moderation" | "fun" | "owner";
 
@@ -37,11 +34,4 @@ export interface ApplicationCommandStructure {
 
 export interface ExtendedClientOptions extends Discord.ClientOptions {
   prefix: string;
-}
-
-export {
-  Client,
-  Command,
-  Loadders,
-  Event
 }
