@@ -1,9 +1,9 @@
-const { CommandInteraction, Message, Client } = require("discord.js")
+const { CommandInteraction, Message } = require("discord.js")
 
 /**
+ * @typedef {import("../../typings/index").Client} Client
  * @typedef {import("../../typings/index").ApplicationCommandStructure} ApplicationCommandStructure
  * @typedef {import("../../typings/index").CommandPermissions} CommandPermissions
- * @typedef {import("../../typings/index").ApplicationCommandExecute} ApplicationCommandExecute
  * @typedef {import("../../typings/index").TextCommandStructure} TextCommandStructure
  * @typedef {import("../../typings/index").CommandPermissions} CommandPermissions
  * @typedef {import("../../typings/index").TextCommandExecute} TextCommandExecute
@@ -23,49 +23,49 @@ class ApplicationCommand{
          * Command name
          * @type {string}
          */
-        this.name = options.name ?? null;
+        this.name = options?.name ?? null;
 
         /**
          * Command description
          * @type {string}
          */
-        this.description = options.description ?? null;
+        this.description = options?.description ?? null;
 
         /**
          * Command name localization
          * @type {import("discord-api-types/v10").LocalizationMap}
          */
-        this.localization = options.localization ?? null;
+        this.localization = options?.localization ?? null;
 
         /**
          * Command permissions
          * @type {CommandPermissions}
          */
-        this.permissions = options.permissions ?? { user: [], client: [] };
+        this.permissions = options?.permissions ?? { user: [], client: [] };
 
         /**
          * Command options
          * @type {import("discord.js").ApplicationCommandOption}
          */
-        this.options = options.options ?? [];
+        this.options = options?.options ?? [];
 
         /**
          * Command type
          * @type {import("discord.js").ApplicationCommandType}
          */
-        this.type = options.type ?? "CHAT_INPUT";
+        this.type = options?.type ?? "CHAT_INPUT";
 
         /**
          * Command category
          * @type {CommandCategory}
          */
-        this.category = options.category ?? null;
+        this.category = options?.category ?? null;
 
         /**
          * Command execute function
-         * @type {ApplicationCommandExecute}
+         * @type {(client: Client, interaction: CommandInteraction)}
          */
-        this.execute = options.execute;
+        this.run = options?.run ?? null;
     }
 
     /**
@@ -109,7 +109,7 @@ class ApplicationCommand{
      * @param {import("discord.js").ApplicationCommandOption} options
      */
     setOptions(options){
-        this.options = options;
+        this.options = options ?? [];
         return this;
     }
 
@@ -133,10 +133,10 @@ class ApplicationCommand{
 
     /**
      * Command execute function
-     * @param {ApplicationCommandExecute} execute
+     * @param {(client: Client, interaction: CommandInteraction)} execute
      */
-    setExecute(execute){
-        this.execute = execute;
+    setRun(execute){
+        this.run = execute;
         return this;
     }
 
@@ -197,9 +197,9 @@ class TextCommand{
 
         /**
          * Command execute function
-         * @type {TextCommandExecute}
+         * @type {(client: Client, message: Message, args: string[])}
          */
-        this.execute = options.execute;
+        this.run = options.run;
     }
 
     /**
@@ -258,9 +258,9 @@ class TextCommand{
 
     /**
      * Command execute function
-     * @param {TextCommandExecute} execute
+     * @param {(client: Client, message: Message, args: string[])} execute
      */
-    setExecute(execute){
+    setRun(execute){
         this.execute = execute;
         return this;
     }

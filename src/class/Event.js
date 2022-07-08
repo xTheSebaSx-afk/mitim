@@ -37,24 +37,6 @@ class Event{
         this.run = options.run ?? null;
     }
 
-    /**
-     * Event name
-     * @param {string} name 
-     */
-    setName(name){
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * Event run function
-     * @param {(client: Client, ...args: Discord.ClientEvents[K]) => void} run
-     */
-    setRun(run){
-        this.run = run;
-        return this;
-    }
-
     toJSON(){
         return this;
     }

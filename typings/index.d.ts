@@ -25,19 +25,13 @@ export class Client extends Discord.Client{
     
     public ApplicationCommands: Collection<string, ApplicationCommandStructure>;
 
+    public TextCommands: Collection<string, TextCommandStructure>;
+
 }
 
 interface CommandPermissions{
     user: PermissionString[];
     bot: PermissionString[];
-}
-
-interface TextCommandExecute{
-    (client: ExtendedClient, message: Message, args: string[]): Promise<void>;
-}
-
-interface ApplicationCommandExecute{
-    (client: ExtendedClient, interaction: CommandInteraction): Promise<void>;
 }
 
 export interface TextCommandStructure{
@@ -48,7 +42,7 @@ export interface TextCommandStructure{
     aliases?: string[] | [];
     permissions: CommandPermissions;
     category: CommandCategory;
-    execute: TextCommandExecute;
+    run: (client: Client, message: Message, args: string[]) => void;
 }
 
 export interface ApplicationCommandStructure{
@@ -60,7 +54,7 @@ export interface ApplicationCommandStructure{
     description_localizations?: LocalizationMap;
     permissions?: CommandPermissions | {user: PermissionString[], bot: PermissionString[]};
     category: CommandCategory;
-    run: ApplicationCommandExecute;
+    run: (client: Client, interaction: CommandInteraction) => void;
 }
 
 /**
@@ -79,11 +73,11 @@ export interface ApplicationCommandStructure{
  * })
  */
 export class ApplicationCommand{
-    constructor(options: ApplicationCommandStructure);
+    constructor(options?: ApplicationCommandStructure);
     /** Command name */
-    public name: string;
+    public name?: string;
     /** Command description */
-    public description: string;
+    public description?: string;
     /** Command options */
     public options?: ApplicationCommandOption[] | [];
     /** Command type */
@@ -97,7 +91,7 @@ export class ApplicationCommand{
     /** Command permissions */
     public permissions?: CommandPermissions | { user: [], bot: [] };
     /** Command run function */
-    public run: ApplicationCommandExecute
+    public run?: (client: Client, message: Message, args: string[]) => void;
     /** Command name */
     public setName(name: string): this;
     /** Command description */
@@ -115,7 +109,7 @@ export class ApplicationCommand{
     /** Command category */
     public setCategory(category: CommandCategory): this;
     /** Command run function */
-    public setRun(run: ApplicationCommandExecute): this;
+    public setRun(run: (client: Client, interaction: CommandInteraction) => void): this;
 
     public toJSON(): this;
 }
@@ -137,7 +131,7 @@ export class TextCommand{
     /** Command permissions */
     public permissions?: CommandPermissions | { user: [], bot: [] };
     /** Command execute function */
-    public execute: TextCommandExecute;
+    public run: (client: Client, message: Message, args: string[]) => void;
     /** Command name */
     public setName(name: string): this;
     /** Command description */
@@ -153,21 +147,17 @@ export class TextCommand{
     /** Command permissions */
     public setPermissions(permissions?: CommandPermissions | { user: [], bot: [] }): this;
     /** Command execute function */
-    public setExecute(execute: TextCommandExecute): this;
+    public setRun(run: (client: Client, message: Message, args: string[]) => void): this;
 
     public toJSON(): this;
 }
 
 export class Event<K extends keyof ClientEvents>{
-    constructor(options: { name: K, run: (client: ExtendedClient, ...args: ClientEvents[K]) => void });
+    constructor(options: { name: K, run: (client: Client, ...args: ClientEvents[K]) => any });
     /** Event name */
     public name: K;
     /** Event run function */
-    public run: (client: ExtendedClient, ...args: ClientEvents[K]) => void;
-    /** Event name */
-    public setName(name: K): this;
-    /** Event run function */
-    public setRun(run: (client: ExtendedClient, ...args: ClientEvents[K]) => void): this;
+    public run: (client: Client, ...args: ClientEvents[K]) => any;
 
     public toJSON(): this;
 }
